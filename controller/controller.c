@@ -33,7 +33,6 @@ Cliente* cadastrarCliente(Fila *fila){
             }
         } while (1);
 
-        cliente->tempo = 0;
         inserirClienteFila(fila, cliente);
     }
     return cliente;

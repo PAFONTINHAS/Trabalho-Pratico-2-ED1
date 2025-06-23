@@ -6,13 +6,9 @@ typedef struct {
     char nome[50];
     bool ehPreferencial;
     int quantidadeItens;
-    int tempo;
 } Cliente;
 
-typedef struct Node{
-    Cliente* cliente;
-    struct Node* proximo;
-}Nodecliente;
 
-
+Cliente* cadastrarNovoCliente(const char* nome, bool ehPreferencial, int quantidadeItens);
+void imprimirDadosCliente(Cliente* c);
 #endif
