@@ -16,17 +16,17 @@ Cliente* cadastrarCliente(Fila *fila){
         fgets(cliente->nome, 50, stdin);
 
         printf("Quantos itens?: ");
-        scanf("%d", &cliente->itens);
+        scanf("%d", &cliente->quantidadeItens);
 
         do {
             printf("O cliente é prioritário? (s/n): ");
             scanf(" %c", &resp);
 
             if (resp == 's' || resp == 'S') {
-                cliente->prioridade = true;
+                cliente->ehPreferencial = true;
                 break;
             } else if (resp == 'n' || resp == 'N') {
-                cliente->prioridade = false;
+                cliente->ehPreferencial = false;
                 break;
             } else {
                 printf("Resposta inválida!\n");
