@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
+#include <windows.h>
 #include "estruturas.h"
 #include "filas/filas.h"
 #include "clientes/clientes.h"
@@ -15,6 +16,7 @@ int main(){
     Fila* filaPreferencial = criarFila();
     ListaAtendidos* clientesAtendidos = criarListaAtendidos();
 
+
     // Variáveis para controlar a lógica de atendimento alternado:
     // Conta quantos clientes comuns foram atendidos desde o último preferencial.
     int contadorComum = 0;
@@ -26,20 +28,25 @@ int main(){
     bool proximoEhPreferencial = false;
 
     int opcao;
-
     preencherListaParticipantes(filaComum, filaPreferencial);
 
-    do{
-        printf("\n===================MENU===================\n");
-        printf("1 - Inserir cliente na fila\n");
-        printf("2 - Atender cliente \n");
-        printf("3 - Imprimir as filas\n");
-        printf("4 - Gerar estatísticas de atendimento\n");
-        printf("0 - Sair\n");
-        printf("\nOpção: ");
-        scanf("%d", &opcao);
+    system("cls");
 
-        switch (opcao){
+
+    printf("\n\n\tPágina Inicial");
+    printf("\nEscolha uma opção");
+
+    printf("\n===================MENU===================\n");
+    printf("1 - Inserir cliente na fila\n");
+    printf("2 - Atender cliente \n");
+    printf("3 - Imprimir as filas\n");
+    printf("4 - Gerar estatísticas de atendimento\n");
+    printf("0 - Sair\n");
+    printf("\nOpção: ");
+    scanf("%d", &opcao);
+    while(opcao != 0){
+
+        switch(opcao){
             case 1:
                 // Chama a função para cadastrar um cliente interativamente (pedindo dados ao usuário).
                 cadastrarCliente(filaComum, filaPreferencial);
@@ -67,7 +74,20 @@ int main(){
                 break;
         }
 
-    }while(opcao != 0);
+        system("cls");
+
+        printf("\nEscolha uma opção: ");
+        printf("\n===================MENU===================\n");
+        printf("1 - Inserir cliente na fila\n");
+        printf("2 - Atender cliente \n");
+        printf("3 - Imprimir as filas\n");
+        printf("4 - Gerar estatísticas de atendimento\n");
+        printf("0 - Sair\n");
+        printf("\nOpção: ");
+        scanf("%d", &opcao);
+
+    }
+
 
     return 0;
 }
