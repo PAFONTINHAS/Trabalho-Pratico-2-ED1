@@ -3,6 +3,7 @@
 
 #include "filas/filas.h"
 #include "clientes/clientes.h"
+#include <windows.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -34,13 +35,25 @@
         }
         return cliente;
     }
-    
+
     void preencherListaParticipantes(Fila* filaComum, Fila* filaPreferencial){
+
+        printf("Adicionando clientes nas filas");
+        Sleep(500);
+        printf(".");
+        Sleep(500);
+        printf(".");
+        Sleep(500);
+        printf(".");
+
         cadastrarClienteDemo(filaComum, filaPreferencial, "Larissa", 17, false);
         cadastrarClienteDemo(filaComum, filaPreferencial, "Sebastião", 15, true);
         cadastrarClienteDemo(filaComum, filaPreferencial, "Gertrudes", 10, true);
         cadastrarClienteDemo(filaComum, filaPreferencial, "Leticia", 25, false);
         cadastrarClienteDemo(filaComum, filaPreferencial, "Serenita", 30, true);
         cadastrarClienteDemo(filaComum, filaPreferencial, "Gustavo", 8, false);
+
+        printf("\nClientes adicionados");
+        Sleep(500);
     }
 #endif
