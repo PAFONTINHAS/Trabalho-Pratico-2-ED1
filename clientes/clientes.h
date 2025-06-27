@@ -1,14 +1,16 @@
-#ifndef estruturas_h
-#define estruturas_h
+#ifndef CLIENTES_h
+#define CLIENTES_h
 #include <stdbool.h>
-
-typedef struct {
-    char nome[50];
-    bool ehPreferencial;
-    int quantidadeItens;
-} Cliente;
+#include "../estruturas.h"
 
 
-Cliente* cadastrarNovoCliente(const char* nome, bool ehPreferencial, int quantidadeItens);
-void imprimirDadosCliente(Cliente* c);
+// FUNÇÃO FEITA POR PETERSON
+// Calcula o tempo de atendimento estimado com base no número de itens.
+int calcularTempo(int itens);
+
+// FUNÇÃO FEITA POR ISABELLA
+//Cadastra um novo cliente com base na entrada do usuário (interativo).
+Cliente* cadastrarCliente(Fila *filaComum, Fila *filaPreferencial);
+
+
 #endif
