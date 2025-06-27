@@ -15,6 +15,7 @@ void handleOpcaoDois(Fila *filaComum, Fila *filaPreferencial, ListaAtendidos *cl
 
         // Chama a função para atender o cliente da fila preferencial.
         atenderCliente(filaPreferencial, clientesAtendidos);
+        printf("\nCliente atendido com sucesso!\n");
         *contadorComum = 0; // Reseta o contador de clientes comuns, pois um preferencial foi atendido.
         *proximoEhPreferencial = false; // Define que o próximo atendimento NÃO será preferencial (voltará para comum).
 
@@ -26,6 +27,7 @@ void handleOpcaoDois(Fila *filaComum, Fila *filaPreferencial, ListaAtendidos *cl
 
         // Chama a função para atender o cliente da fila comum.
         atenderCliente(filaComum, clientesAtendidos);
+        printf("\nCliente atendido com sucesso!\n");
         (*contadorComum)++; // Incrementa o contador de clientes comuns atendidos no ciclo atual.
 
         // Verifica se o limite de clientes comuns para o ciclo foi atingido.
@@ -41,6 +43,7 @@ void handleOpcaoDois(Fila *filaComum, Fila *filaPreferencial, ListaAtendidos *cl
         printf("\nAtendendo cliente da Fila Preferencial (prioridade ou limite de comuns atingido)...\n");
         // Chama a função para atender o cliente da fila preferencial.
         atenderCliente(filaPreferencial, clientesAtendidos);
+        printf("\nCliente atendido com sucesso!\n");
         *contadorComum = 0; // Reseta o contador de comuns.
         *proximoEhPreferencial = false; // Volta a priorizar comuns no próximo ciclo.
 
@@ -52,6 +55,7 @@ void handleOpcaoDois(Fila *filaComum, Fila *filaPreferencial, ListaAtendidos *cl
         printf("\nAtendendo cliente da Fila Comum (sem preferenciais disponíveis)...\n");
         // Chama a função para atender o cliente da fila comum.
         atenderCliente(filaComum, clientesAtendidos);
+        printf("\nCliente atendido com sucesso!\n");
         (*contadorComum)++; // Incrementa o contador de comuns.
         // Verifica se o limite de clientes comuns foi atingido.
         if (*contadorComum == LIMITE_COMUM) {
@@ -70,8 +74,6 @@ void handleOpcaoDois(Fila *filaComum, Fila *filaPreferencial, ListaAtendidos *cl
 // FUNÇÃO FEITA POR PETERSON
 // Função que gerencia a saída do programa, liberando toda a memória alocada dinamicamente.
 void handleOpcaoZero(Fila *filaComum, Fila *filaPreferencial, ListaAtendidos *clientesAtendidos) {
-    printf("Saindo...\n");
-
     // Libera a memória alocada para os clientes e nós da fila comum.
     while (filaComum->primeiro != NULL) {
         NodeCliente* temp_node = filaComum->primeiro; // Armazena o nó atual.
@@ -114,7 +116,7 @@ void gerarEstatisticas(ListaAtendidos *listaAtendidos) {
 
     // Ponteiro auxiliar para percorrer a lista de clientes atendidos, começando do primeiro.
     NodeAtendido* atual = listaAtendidos->primeiro;
-
+    
     while (atual != NULL) {
         if (atual->cliente->prioridade) {
             total_clientes_preferenciais++; // Incrementa o contador de clientes preferenciais.
@@ -126,6 +128,14 @@ void gerarEstatisticas(ListaAtendidos *listaAtendidos) {
         // Soma os itens do cliente atual ao total geral de itens processados.
         total_itens_processados += atual->cliente->itens;
         atual = atual->proximo;
+    }
+
+    if (listaAtendidos == NULL) {
+        printf("\nERRO CRÍTICO: A lista de atendidos não foi inicializada corretamente.\n");
+        // Pausa para o usuário ler a mensagem
+        printf("\nPressione Enter para continuar...");
+        getchar();
+        return; // Sai da função com segurança
     }
 
     printf("\n==== ESTATÍSTICAS DE ATENDIMENTO ====\n");

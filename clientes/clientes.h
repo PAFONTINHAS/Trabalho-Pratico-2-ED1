@@ -10,7 +10,7 @@ int calcularTempo(int itens);
 
 // FUNÇÃO FEITA POR ISABELLA
 //Cadastra um novo cliente com base na entrada do usuário (interativo).
-Cliente* cadastrarCliente(Fila *filaComum, Fila *filaPreferencial);
+Cliente* cadastrarCliente(Fila *filaComum, Fila *filaPreferencial, const char *nome, bool prioridade, int itens);
 
 
 #endif

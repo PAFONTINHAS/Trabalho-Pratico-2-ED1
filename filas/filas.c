@@ -94,7 +94,7 @@ void imprimirFila(Fila *fila){
         // Loop que continua enquanto houver clientes na fila.
         while(aux != NULL){
             // Imprime o nome do cliente e a quantidade de itens.
-            printf("\t\t%s,\t%d itens\n", aux->cliente->nome, aux->cliente->itens);
+            printf("   %-20s  %3d itens\n", aux->cliente->nome, aux->cliente->itens);
             // Move para o próximo cliente na fila.
             aux = aux->proximo;
         }

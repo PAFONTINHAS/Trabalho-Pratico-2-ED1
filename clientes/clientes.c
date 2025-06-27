@@ -14,37 +14,15 @@ int calcularTempo(int itens) {
 
 // FUNÇÃO FEITA POR ISABELLA
 // Função que cadastra um novo cliente com interação do usuário, solicitando nome, itens e prioridade.
-Cliente* cadastrarCliente(Fila *filaComum, Fila *filaPreferencial){
+Cliente* cadastrarCliente(Fila* filaComum, Fila* filaPreferencial, const char *nome, bool prioridade, int itens) {
     Cliente *cliente = malloc(sizeof(Cliente));
-    char resp;
 
     if (cliente != NULL){
-        printf("Digite o nome do cliente: ");
-        getchar();
-        fgets(cliente->nome, 50, stdin);
-        cliente->nome[strcspn(cliente->nome, "\n")] = 0;
-
-        printf("Quantidade de itens: ");
-        scanf("%d", &cliente->itens);
-
-        do {
-            printf("O cliente é prioritário? (s/n): ");
-            scanf(" %c", &resp);
-
-            if (resp == 's' || resp == 'S') {
-                cliente->prioridade = true; // Define o cliente como prioritário.
-                break;
-            }
-            else if (resp == 'n' || resp == 'N') {
-                cliente->prioridade = false; // Define o cliente como não prioritário.
-                break;
-            }
-            else {
-                printf("Resposta inválida!\n"); // Informa ao usuário.
-            }
-        } while (1);
-
+        strncpy(cliente->nome, nome, sizeof(cliente->nome) - 1); // Copia o nome do cliente, garantindo que não ultrapasse o tamanho máximo.
+        cliente->nome[sizeof(cliente->nome) - 1] = '\0'; //
         cliente->tempo = 0; // Inicializa o tempo de atendimento como 0; será calculado depois.
+        cliente->prioridade = prioridade; // Define se o cliente é prioritário ou não.
+        cliente->itens = itens; // Define a quantidade de itens do cliente.
 
         // Lógica para inserir o cliente na fila correta (preferencial ou comum).
         if (cliente->prioridade) {
