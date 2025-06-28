@@ -17,6 +17,11 @@ Este é um programa em C que simula o atendimento de clientes em caixas de super
 * **Cálculo de Tempo de Atendimento:** Cada item de um cliente leva 5 segundos para ser processado, e o tempo total é exibido ao final do atendimento.
 * **Liberação de Memória:** O programa garante a liberação de toda a memória alocada dinamicamente ao ser encerrado.
 
+## Vídeo do sistema sendo executado
+
+Para facilitar o entendimento do sistema, gravamos um vídeo demonstrando suas funcionalidades.
+[Acesse o vídeo através desse link](https://youtu.be/UrPyiPX_ld4?si=-333aBw7uHbxTs1I)
+
 ## Estrutura do Projeto
 
 O projeto é organizado nos seguintes arquivos:
@@ -87,4 +92,4 @@ Para compilar e executar este programa no VS Code, siga os passos abaixo:
 4.  **Estatísticas:** Experimente cadastrar e atender diferentes tipos de clientes para ver as estatísticas se atualizando.
 
 ---
-**Desenvolvido por:** Clarissa Morita, Giovanna Dornelles, João Victor e Peterson Fontinhas
+**Desenvolvido por:** Clarissa Morita, Giovanna Dornelles, Isabella Vicente, João Victor e Peterson Fontinhas
